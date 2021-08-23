@@ -35,7 +35,9 @@ export default {
   ],
   styleResources: {
     scss: [
-      '~/assets/css/variables.scss' // use underscore "_" & also file extension ".scss"
+       // use underscore "_" & also file extension ".scss"
+      '~/assets/css/variables.scss',
+      '~/assets/css/mixins.scss',
       ]
   },
 
