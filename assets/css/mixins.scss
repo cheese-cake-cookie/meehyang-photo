@@ -1,3 +1,12 @@
+@mixin sub-title1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  font-size: 18px;
+}
+
 @mixin paragraph {
   display: -webkit-box;
   -webkit-line-clamp: 2;
