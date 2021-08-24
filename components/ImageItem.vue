@@ -3,7 +3,7 @@ export default {
   name: 'ImageItemComponent',
   functional: true,
   render(h, { props, listeners }) {
-    const { url, description } = props;
+    const { url, title, description } = props;
 
     const image = h('img', {
       staticClass: 'image',
@@ -24,6 +24,13 @@ export default {
         staticClass: 'image__dim',
       },
       [
+        h(
+          'p',
+          {
+            staticClass: 'image__title',
+          },
+          title || 'IMAGE TITLE'
+        ),
         h(
           'p',
           {
@@ -66,6 +73,7 @@ export default {
       transform: scale3d(1.1, 1.1, 1.1);
     }
 
+    & .image__title,
     & .image__description {
       transform: translate3d(0px, 0px, 0px);
     }
@@ -73,6 +81,8 @@ export default {
 }
 
 .image {
+  width: 100%;
+  height: 100%;
   opacity: 0;
   transition: 0.3s ease-in-out;
 
@@ -92,9 +102,17 @@ export default {
     opacity: 0;
   }
 
+  &__title {
+    @include sub-title1;
+    position: absolute;
+    bottom: 35px;
+    color: #fff;
+    transform: translate3d(0px, 50px, 0px);
+    transition: 0.2s ease-in-out;
+  }
+
   &__description {
     @include paragraph;
-
     position: absolute;
     bottom: 15px;
     color: #fff;
