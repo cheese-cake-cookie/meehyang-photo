@@ -1,6 +1,6 @@
 backend:
-  name: git-gateway
-  # name: test-repo
+  # name: git-gateway
+  name: test-repo
   branch: master # Branch to update (optional; defaults to master)
 
 media_folder: static/images
@@ -15,7 +15,11 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image' }
+      - label: Images
+        name: images
+        widget: list
+        fields:
+          - { label: Image, name: image, widget: image }
   - label: 'profile'
     name: 'profile'
     folder: 'content'
@@ -24,7 +28,11 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image' }
+      - label: Images
+        name: images
+        widget: list
+        fields:
+          - { label: Image, name: image, widget: image }
   - label: 'travel'
     name: 'travel'
     folder: 'content'
@@ -33,4 +41,8 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'image' }
+      - label: Images
+        name: images
+        widget: list
+        fields:
+          - { label: Image, name: image, widget: image }
