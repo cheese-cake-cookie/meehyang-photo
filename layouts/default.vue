@@ -1,12 +1,12 @@
 <template>
   <div id="content" class="theme--light">
-    <Header class="header" />
+    <Header class="layout__header" />
     <Nuxt />
-    <Footer class="footer" />
+    <Footer class="layout__footer" />
   </div>
 </template>
 <style lang="scss">
-.footer {
+.layout__footer {
   position: fixed;
   left: 0px;
   right: 0px;
