@@ -2,7 +2,7 @@
 export default {
   name: 'ImageItemComponent',
   functional: true,
-  render(h, { props, listeners }) {
+  render(h, { props, listeners, data }) {
     const { url, title, description } = props;
 
     const image = h('img', {
@@ -44,7 +44,7 @@ export default {
     return h(
       'div',
       {
-        staticClass: 'image-item-component',
+        staticClass: data.staticClass.concat(' image-item-component'),
         on: {
           ...listeners,
         },
