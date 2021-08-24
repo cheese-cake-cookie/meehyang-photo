@@ -1,6 +1,5 @@
 backend:
   name: git-gateway
-  # name: test-repo
   branch: master # Branch to update (optional; defaults to master)
 
 media_folder: static/images
@@ -9,7 +8,7 @@ public_folder: /images
 collections:
   - label: 'music'
     name: 'music'
-    folder: 'content'
+    folder: 'content/music'
     create: true
     filter: { field: 'type', value: 'music' }
     fields:
@@ -23,7 +22,7 @@ collections:
           - { label: Image, name: image, widget: image }
   - label: 'profile'
     name: 'profile'
-    folder: 'content'
+    folder: 'content/profile'
     create: true
     filter: { field: 'type', value: 'profile' }
     fields:
@@ -35,11 +34,11 @@ collections:
         widget: list
         fields:
           - { label: Image, name: image, widget: image }
-  - label: 'travel'
-    name: 'travel'
-    folder: 'content'
+  - label: 'daily'
+    name: 'daily'
+    folder: 'content/daily'
     create: true
-    filter: { field: 'type', value: 'travel' }
+    filter: { field: 'type', value: 'daily' }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'string' }
