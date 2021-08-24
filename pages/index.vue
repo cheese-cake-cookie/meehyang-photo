@@ -45,15 +45,8 @@
 <script>
 export default {
   async asyncData({ $content }) {
-    // @TODO 비동기 호출로 변경할 것
-    const musics = await $content('/music').fetch();
-    const peoples = await $content('/people')
-      .fetch()
-      .catch((err) => []);
-    const travels = await $content('/travel')
-      .fetch()
-      .catch((err) => []);
-
+    const posts = await $content('/music').fetch();
+    console.log(posts);
     return {
       musics,
       peoples,

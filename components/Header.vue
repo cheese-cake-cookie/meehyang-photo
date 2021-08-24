@@ -10,7 +10,7 @@
           <li class="header__item">
             <NuxtLink to="/people">PEOPLE</NuxtLink>
           </li>
-          <li class="header__item"><NuxtLink to="/travel">TRAVEL</NuxtLink></li>
+          <li class="header__item"><NuxtLink to="/daily">DAILY</NuxtLink></li>
         </ul>
       </nav>
     </div>
