@@ -20,13 +20,14 @@
 <script>
 export default {
   name: 'Header',
-}
+};
 </script>
 
 <style lang="scss">
 .header {
   display: flex;
   align-items: center;
+  padding: 20px 15px;
   width: 100%;
   height: 70px;
   box-shadow: 0px 0px 3px 0px #e6e7e8;

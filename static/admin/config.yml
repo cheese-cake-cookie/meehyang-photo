@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  # name: test-repo
+  branch: master # Branch to update (optional; defaults to master)
+
+media_folder: static/img
+public_folder: /images
+
+collections:
+  - label: 'music'
+    name: 'music'
+    folder: '_posts'
+    create: true
+    filter: { field: 'type', value: 'music' }
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+  - label: 'profile'
+    name: 'profile'
+    folder: '_posts'
+    create: true
+    filter: { field: 'type', value: 'profile' }
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+  - label: 'travel'
+    name: 'travel'
+    folder: '_posts'
+    create: true
+    filter: { field: 'type', value: 'travel' }
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
