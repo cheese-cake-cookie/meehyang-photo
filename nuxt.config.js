@@ -18,9 +18,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/css/reset.scss',
-  ],
+  css: ['~/assets/css/reset.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -31,19 +29,20 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build','@nuxtjs/style-resources'
+    '@nuxt/typescript-build',
+    '@nuxtjs/style-resources',
   ],
   styleResources: {
     scss: [
-       // use underscore "_" & also file extension ".scss"
+      // use underscore "_" & also file extension ".scss"
       '~/assets/css/variables.scss',
       '~/assets/css/mixins.scss',
-      ]
+    ],
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxt/content'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-}
+};
