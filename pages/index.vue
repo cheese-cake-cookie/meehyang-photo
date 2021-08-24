@@ -1,5 +1,12 @@
 <template>
-  <div>{{ posts }}</div>
+  <div>
+    <ImageItem
+      v-for="(post, index) in posts"
+      :key="index"
+      :url="post.image"
+      :description="post.description"
+    />
+  </div>
 </template>
 <script>
 export default {
