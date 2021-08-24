@@ -1,8 +1,15 @@
 <template>
-  <div></div>
+  <div>{{ posts }}</div>
 </template>
 <script>
 export default {
+  async asyncData({ $content }) {
+    const posts = await $content('/').fetch();
+
+    return {
+      posts,
+    };
+  },
   head() {
     return {
       script: [
