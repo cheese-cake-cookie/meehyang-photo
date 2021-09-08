@@ -59,8 +59,9 @@ export default {
 .image-item-component {
   position: relative;
   display: inline-flex;
+  padding-bottom: 100%;
   overflow: hidden;
-  background-color: $light-gray;
+  background-color: lightgray;
   font-size: 0px;
   cursor: pointer;
 
@@ -81,8 +82,8 @@ export default {
 }
 
 .image {
+  position: absolute;
   width: 100%;
-  height: 100%;
   opacity: 0;
   transition: 0.3s ease-in-out;
 
