@@ -45,4 +45,12 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/music/:slug',
+        component: resolve(__dirname, 'pages/music/index.vue')
+      })
+    }
+  }
 };
