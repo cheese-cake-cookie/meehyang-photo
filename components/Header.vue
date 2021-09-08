@@ -8,7 +8,7 @@
           <li class="header__item"><NuxtLink to="/">ALL</NuxtLink></li>
           <li class="header__item"><NuxtLink to="/music">MUSIC</NuxtLink></li>
           <li class="header__item">
-            <NuxtLink to="/profile">PROFILE</NuxtLink>
+            <NuxtLink to="/people">PEOPLE</NuxtLink>
           </li>
           <li class="header__item"><NuxtLink to="/travel">TRAVEL</NuxtLink></li>
         </ul>
