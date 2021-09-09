@@ -48,7 +48,7 @@ export default {
     extendRoutes(routes, resolve) {
       routes.push({
         path: '/music/:slug',
-        component: resolve(__dirname, 'pages/music/index.vue')
+        component: 'pages/music/index.vue'
       })
     }
   }
