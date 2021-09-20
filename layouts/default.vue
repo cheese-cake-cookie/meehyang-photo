@@ -20,11 +20,12 @@
     box-shadow: 0px 0px 3px 0px #e6e7e8;
   }
   &__content {
-    padding: 65px 0px;
+    padding: 10px 0px 60px;
   }
   &__footer {
     position: fixed;
     padding: 10px 15px;
+    height: auto;
     left: 0px;
     right: 0px;
     bottom: 0px;
@@ -37,17 +38,20 @@
   .layout {
     &__header {
       position: fixed;
-      padding: 10px 15px;
       height: 50px;
       top: 0px;
       left: 0px;
       right: 0px;
-      background: #fff;
     }
 
     &__content {
       margin: 0px auto;
+      padding: 60px 0px;
       width: $desktop-width;
+    }
+
+    &__footer {
+      height: 50px;
     }
   }
 }

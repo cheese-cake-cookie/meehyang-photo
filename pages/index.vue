@@ -12,6 +12,10 @@
         @click="showContent(post.content)"
       />
     </ul>
+    <ImageSliderModal
+      ref="imageSliderModal"
+      :images="content"
+    ></ImageSliderModal>
   </section>
 </template>
 <script>
@@ -45,8 +49,10 @@ export default {
   },
   methods: {
     showContent(content) {
-      console.log(content);
       this.content = content;
+      this.$nextTick(() => {
+        this.$refs.imageSliderModal.$emit('show');
+      });
     },
   },
 };

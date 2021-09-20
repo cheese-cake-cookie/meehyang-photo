@@ -7,9 +7,14 @@
           >linkedin</a
         >
       </li>
-      <li>
+      <li class="profile__item">
         <a href="https://github.com/cheese-cake-cookie" target="_blank"
           >github</a
+        >
+      </li>
+      <li class="profile__item">
+        <a href="https://www.instagram.com/meehyang_photo/" target="_blank"
+          >instagram</a
         >
       </li>
     </ul>
@@ -24,7 +29,6 @@ export default {};
 .footer {
   display: flex;
   align-items: center;
-  height: 50px;
 }
 .profile {
   &__list {
@@ -32,8 +36,8 @@ export default {};
     margin-left: auto;
   }
 
-  &__item {
-    margin: 0px 15px;
+  &__item:not(:last-child) {
+    margin-right: 15px;
   }
 }
 </style>
