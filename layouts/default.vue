@@ -20,10 +20,10 @@
     box-shadow: 0px 0px 3px 0px #e6e7e8;
   }
   &__content {
-    padding: 65px 0px;
+    padding: 10px 0px;
   }
   &__footer {
-    position: fixed;
+    position: sticky;
     padding: 10px 15px;
     left: 0px;
     right: 0px;
