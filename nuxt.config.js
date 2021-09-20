@@ -3,17 +3,25 @@ export default {
   target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'meehyang-photo',
+    title: 'meehyang photo',
+    titleTemplate: '%s - meehyang photo',
     htmlAttrs: {
       lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: 'meehyang photo' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        href: '//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css',
+      }, 
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+  ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -40,16 +48,9 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxt/content'],
+  modules: ['@nuxt/content', '@nuxtjs/axios'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
-  router: {
-    extendRoutes(routes, resolve) {
-      routes.push({
-        path: '/music/:slug',
-        component: 'pages/music/index.vue'
-      })
-    }
-  }
+  router: {}
 };

@@ -1,10 +1,18 @@
 <template>
   <footer class="footer">
-    <ul>
-      <li><a href="https://www.linkedin.com/in/meehyang-kim/">linkedin</a></li>
-      <li><a href="https://github.com/cheese-cake-cookie">github</a></li>
-    </ul>
     <p>Copyright &copy; 2021 by Meehyang Kim</p>
+    <ul class="profile__list">
+      <li class="profile__item">
+        <a href="https://www.linkedin.com/in/meehyang-kim/" target="_blank"
+          >linkedin</a
+        >
+      </li>
+      <li>
+        <a href="https://github.com/cheese-cake-cookie" target="_blank"
+          >github</a
+        >
+      </li>
+    </ul>
   </footer>
 </template>
 
@@ -17,5 +25,15 @@ export default {};
   display: flex;
   align-items: center;
   height: 50px;
+}
+.profile {
+  &__list {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__item {
+    margin: 0px 15px;
+  }
 }
 </style>
