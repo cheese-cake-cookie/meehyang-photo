@@ -1,8 +1,7 @@
 <template>
   <div>
     <section class="section">
-      <h1 class="section__title">Music</h1>
-      <p v-if="!musics.length" class="message--empty">empty content</p>
+      <p class="message--empty" v-if="!musics.length">oops! nothing in here!</p>
       <ul class="image__list" v-else>
         <ImageItem
           class="image__item"
@@ -10,11 +9,10 @@
           :key="index"
           :url="music.preview"
           :description="music.description"
-          @click="moveToMusicItem(music)"
         />
       </ul>
     </section>
-    <section class="section">
+    <!-- <section class="section">
       <h1 class="section__title">People</h1>
       <p v-if="!peoples.length" class="message--empty">empty content</p>
       <ul class="image__list" v-else>
@@ -39,18 +37,20 @@
           :description="travel.description"
         />
       </ul>
-    </section>
+    </section> -->
   </div>
 </template>
 <script>
 export default {
   async asyncData({ $content }) {
-    const posts = await $content('/music').fetch();
-    console.log(posts);
+    const musics = await $content('/musics')
+      .fetch()
+      .catch((err) => []);
+
     return {
       musics,
-      peoples,
-      travels,
+      // peoples,
+      // travels,
     };
   },
   head() {
@@ -76,19 +76,24 @@ export default {
 }
 
 .section {
-  margin: 0px auto;
-  width: 1000px;
-
   &__title {
+    padding: 15px;
     font-size: 18px;
   }
 }
 .image {
   &__list {
-    margin: 15px 0px 0px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
+  }
+}
+
+@include breakpoint(tablet) {
+  .image {
+    &__list {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
 }
 </style>
