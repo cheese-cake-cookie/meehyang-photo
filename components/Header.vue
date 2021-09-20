@@ -10,7 +10,7 @@
           <li class="header__item">
             <NuxtLink to="/people">PEOPLE</NuxtLink>
           </li>
-          <li class="header__item"><NuxtLink to="/travel">TRAVEL</NuxtLink></li>
+          <li class="header__item"><NuxtLink to="/daily">DAILY</NuxtLink></li>
         </ul>
       </nav>
     </div>
@@ -27,17 +27,13 @@ export default {
 .header {
   display: flex;
   align-items: center;
-  padding: 20px 15px;
-  width: 100%;
-  height: 70px;
-  box-shadow: 0px 0px 3px 0px #e6e7e8;
+  height: 50px;
 
   &__container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: $desktop-width;
-    margin: 0px auto;
+    width: 100%;
   }
 
   &__nav {
@@ -47,6 +43,10 @@ export default {
   &__list {
     display: flex;
     flex-direction: row;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 10px;
   }
 }
 </style>

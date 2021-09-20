@@ -12,21 +12,21 @@ collections:
     filter: { field: 'type', value: 'music' }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
       - { label: 'Preview', name: 'preview', widget: 'image' }
       - label: Images
         name: images
         widget: list
         fields:
           - { label: Image, name: image, widget: image }
-  - label: 'profile'
-    name: 'profile'
-    folder: 'content/profile'
+  - label: 'people'
+    name: 'people'
+    folder: 'content/people'
     create: true
-    filter: { field: 'type', value: 'profile' }
+    filter: { field: 'type', value: 'people' }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
       - { label: 'Preview', name: 'preview', widget: 'image' }
       - label: Images
         name: images
@@ -40,7 +40,7 @@ collections:
     filter: { field: 'type', value: 'daily' }
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
       - { label: 'Preview', name: 'preview', widget: 'image' }
       - label: Images
         name: images
