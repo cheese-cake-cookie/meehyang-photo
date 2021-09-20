@@ -20,10 +20,10 @@
     box-shadow: 0px 0px 3px 0px #e6e7e8;
   }
   &__content {
-    padding: 10px 0px;
+    padding: 10px 0px 60px;
   }
   &__footer {
-    position: sticky;
+    position: fixed;
     padding: 10px 15px;
     left: 0px;
     right: 0px;
@@ -47,6 +47,7 @@
 
     &__content {
       margin: 0px auto;
+      padding: 60px 0px;
       width: $desktop-width;
     }
   }
