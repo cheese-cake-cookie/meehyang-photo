@@ -9,8 +9,13 @@
         :title="music.title"
         :description="music.description"
         :image="music.preview"
+        @click="showContent(music.content)"
       />
     </ul>
+    <ImageSliderModal
+      ref="imageSliderModal"
+      :images="content"
+    ></ImageSliderModal>
   </section>
 </template>
 
@@ -36,6 +41,19 @@ export default {
         },
       ],
     };
+  },
+  data() {
+    return {
+      content: [],
+    };
+  },
+  methods: {
+    showContent(content) {
+      this.content = content;
+      this.$nextTick(() => {
+        this.$refs.imageSliderModal.$emit('show');
+      });
+    },
   },
 };
 </script>
