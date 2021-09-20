@@ -3,17 +3,20 @@ export default {
   name: 'ImageItemComponent',
   functional: true,
   render(h, { props, listeners, data }) {
-    const { url, title, description } = props;
+    const { image, title, description } = props;
 
-    const image = h('img', {
+    const img = h('img', {
       staticClass: 'image',
       class: [],
       attrs: {
-        src: url || 'https://picsum.photos/300/300',
+        src: image,
       },
       on: {
         load: () => {
-          image.elm.classList.add('showing');
+          img.elm.classList.add('showing');
+          if (img.elm.height > img.elm.width) {
+            img.elm.classList.add('horizontal');
+          }
         },
       },
     });
@@ -49,7 +52,7 @@ export default {
           ...listeners,
         },
       },
-      [image, dim]
+      [img, dim]
     );
   },
 };
@@ -59,6 +62,7 @@ export default {
 .image-item-component {
   position: relative;
   display: inline-flex;
+  justify-content: center;
   padding-bottom: 100%;
   overflow: hidden;
   background-color: lightgray;
@@ -83,9 +87,15 @@ export default {
 
 .image {
   position: absolute;
-  width: 100%;
+  width: auto;
+  height: 100%;
   opacity: 0;
   transition: 0.3s ease-in-out;
+
+  &.horizontal {
+    width: 100%;
+    height: auto;
+  }
 
   &.showing {
     opacity: 1;
@@ -106,7 +116,10 @@ export default {
   &__title {
     @include sub-title1;
     position: absolute;
+    left: 15px;
+    right: 15px;
     bottom: 35px;
+    font-size: 15px;
     color: #fff;
     transform: translate3d(0px, 50px, 0px);
     transition: 0.2s ease-in-out;
@@ -115,7 +128,9 @@ export default {
   &__description {
     @include paragraph;
     position: absolute;
-    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 13px;
     color: #fff;
     transform: translate3d(0px, 50px, 0px);
     transition: 0.2s ease-in-out;

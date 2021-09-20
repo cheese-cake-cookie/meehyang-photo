@@ -1,68 +1,52 @@
 <template>
-  <div>
-    <section class="section">
-      <p class="message--empty" v-if="!musics.length">oops! nothing in here!</p>
-      <ul class="image__list" v-else>
-        <ImageItem
-          class="image__item"
-          v-for="(music, index) in musics"
-          :key="index"
-          :url="music.preview"
-          :description="music.description"
-        />
-      </ul>
-    </section>
-    <!-- <section class="section">
-      <h1 class="section__title">People</h1>
-      <p v-if="!peoples.length" class="message--empty">empty content</p>
-      <ul class="image__list" v-else>
-        <ImageItem
-          class="image__item"
-          v-for="(people, index) in peopless"
-          :key="index"
-          :url="people.preview"
-          :description="people.description"
-        />
-      </ul>
-    </section>
-    <section class="section">
-      <h1 class="section__title">Travel</h1>
-      <p v-if="!travels.length" class="message--empty">empty content</p>
-      <ul class="image__list" v-else>
-        <ImageItem
-          class="image__item"
-          v-for="(travel, index) in travels"
-          :key="index"
-          :url="travel.preview"
-          :description="travel.description"
-        />
-      </ul>
-    </section> -->
-  </div>
+  <section class="post-section">
+    <p class="message--empty" v-if="!posts.length">oops! nothing in here!</p>
+    <ul class="image__list" v-else>
+      <ImageItem
+        class="image__item"
+        v-for="(post, index) in posts"
+        :key="index"
+        :title="post.title"
+        :description="post.description"
+        :image="post.preview"
+        @click="showContent(post.content)"
+      />
+    </ul>
+  </section>
 </template>
 <script>
+import { shuffle } from '@/utils/array';
 export default {
-  async asyncData({ $content }) {
-    const musics = await $content('/musics')
+  async asyncData({ $content, $axios }) {
+    const musics = await $content('/music')
+      // .limit(5)
       .fetch()
       .catch((err) => []);
 
+    const peoples = await $content('/people')
+      // .limit(5)
+      .fetch()
+      .catch((err) => []);
+
+    const dailys = await $content('/daily')
+      // .limit(5)
+      .fetch()
+      .catch((err) => []);
+
+    const posts = shuffle([...musics, ...peoples, ...dailys]);
     return {
-      musics,
-      // peoples,
-      // travels,
+      posts: posts,
     };
   },
-  head() {
+  data() {
     return {
-      script: [
-        { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' },
-      ],
+      content: [],
     };
   },
   methods: {
-    moveToMusicItem(music) {
-      this.$router.push({ path: `/music/${music.slug}` });
+    showContent(content) {
+      console.log(content);
+      this.content = content;
     },
   },
 };
@@ -75,12 +59,6 @@ export default {
   }
 }
 
-.section {
-  &__title {
-    padding: 15px;
-    font-size: 18px;
-  }
-}
 .image {
   &__list {
     display: grid;
