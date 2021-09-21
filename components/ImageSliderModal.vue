@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     itemWidth() {
-      return this.windowInnerWidth * 0.6;
+      return this.windowInnerWidth * 0.8;
     },
     isFirst() {
       return this.selectedIndex === 0;
@@ -120,7 +120,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60vw;
+    width: 80vw;
   }
   &__list {
     display: flex;
@@ -133,7 +133,7 @@ export default {
     justify-content: center;
     align-items: center;
     margin: 0px 20px;
-    width: 60vw;
+    width: 80vw;
     max-height: 70vh;
     text-align: center;
     overflow: hidden;
@@ -147,6 +147,7 @@ export default {
     border-radius: 8px;
     box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 50%);
     box-sizing: border-box;
+    background-color: darkgray;
   }
 
   &__button {
