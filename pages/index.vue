@@ -37,7 +37,11 @@ export default {
       .fetch()
       .catch((err) => []);
 
-    const posts = shuffle([...musics, ...peoples, ...dailys]);
+    const posts = shuffle([
+      ...shuffle(musics),
+      ...shuffle(peoples),
+      ...shuffle(dailys),
+    ]);
     return {
       posts: posts,
     };
