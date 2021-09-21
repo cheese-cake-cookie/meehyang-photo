@@ -1,8 +1,14 @@
 <template>
-  <div class="container">
-    <h1 v-if="error.statusCode === 404">Page not found</h1>
-    <h1 v-else>An error occurred</h1>
-    <NuxtLink to="/">Home page</NuxtLink>
+  <div class="container" @click.prevent>
+    <div class="error">
+      <NuxtLink class="link-to-home" to="/">
+        <p class="error__message">Something goes wrong!</p>
+        <img src="/logo_png.png" />
+        <p class="error__description">
+          Click logo and go back to the main page
+        </p>
+      </NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -14,8 +20,38 @@ export default {
       default: null,
     },
   },
-}
+};
 </script>
-<style scoped>
-/** @TODO default layout absolute로 덮기 */
+<style lang="scss" scoped>
+.error {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 99;
+  background-color: #f1b500;
+
+  &__message {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__description {
+    color: #fff;
+  }
+
+  & img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.link-to-home {
+  text-align: center;
+}
 </style>

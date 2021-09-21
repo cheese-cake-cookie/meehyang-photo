@@ -213,7 +213,6 @@ export default {
   }
 
   &__content {
-    margin: 10px 0px 0px;
   }
 
   &__actions {
