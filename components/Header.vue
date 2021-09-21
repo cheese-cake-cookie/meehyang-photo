@@ -97,13 +97,13 @@ export default {
 
   &__item:not(:last-child) {
     margin-right: 10px;
+  }
 
-    &.selected {
-      background-image: linear-gradient(90deg, #aedaf1 95%, #75ccff);
-      background-size: 100% 35%;
-      background-repeat: no-repeat;
-      background-position: bottom;
-    }
+  &__item.selected {
+    background-image: linear-gradient(90deg, #aedaf1 95%, #75ccff);
+    background-size: 100% 35%;
+    background-repeat: no-repeat;
+    background-position: bottom;
   }
 }
 
