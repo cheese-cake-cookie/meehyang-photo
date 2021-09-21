@@ -12,7 +12,7 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'meehyang photo' },
-      { hid: 'og:image', property: 'og:image', content: "/images/170319-pia/17814363_601005940107766_570231981165284466_o_601005940107766.jpg" },
+      { hid: 'og:image', property: 'og:image', content: "/logo.png" },
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
