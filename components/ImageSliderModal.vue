@@ -1,9 +1,6 @@
 <template>
   <UiModal name="imageSliderModal" ref="modal" disabled-button>
     <div class="slider__wrap">
-      <button class="slider__button slider__button--close">
-        <img src="/public/images/btn_prev.png" />
-      </button>
       <ul class="slider__list" :style="sliderListStyle" @click="closeSlider">
         <li
           class="slider__item"
@@ -51,6 +48,9 @@ export default {
     };
   },
   computed: {
+    itemWidth() {
+      return this.windowInnerWidth * 0.6;
+    },
     isFirst() {
       return this.selectedIndex === 0;
     },
@@ -58,19 +58,22 @@ export default {
       return this.selectedIndex === this.images.length - 1;
     },
     sliderListStyle() {
-      let translateX =
-        Math.floor(this.images.length / 2) * this.windowInnerWidth * 0.7;
+      let translateX = Math.floor(this.images.length / 2) * this.itemWidth;
 
       if (this.images.length % 2 === 0) {
-        translateX -= (this.windowInnerWidth * 0.7) / 2;
+        translateX -= this.itemWidth / 2;
       }
 
-      translateX -= this.selectedIndex * this.windowInnerWidth * 0.7;
+      translateX -= this.selectedIndex * this.itemWidth;
 
       return {
-        width: `${this.images.length * this.windowInnerWidth * 0.7}px`,
+        width: `${this.images.length * this.itemWidth}px`,
         transform: `translate3d(${translateX}px, 0px, 0px)`,
-        'transition-duration': `${this.durationSeconds}ms`,
+        webkitTransform: `translate3d(${this.translateX}px, 0px, 0px)`,
+        mozTransform: `translate3d(${this.translateX}px, 0px, 0px)`,
+        transitionDuration: `${this.durationSeconds}ms`,
+        webkitTransitionDuration: `${this.durationSeconds}ms`,
+        moxTransitionDuration: `${this.durationSeconds}ms`,
       };
     },
   },
@@ -87,6 +90,7 @@ export default {
   },
   methods: {
     showModal() {
+      this.selectedIndex = 0;
       this.$refs.modal.$emit('show');
     },
     hideModal() {
@@ -116,28 +120,33 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70vw;
+    width: 60vw;
   }
   &__list {
-    display: table;
-    white-space: nowrap;
-    overflow: hidden;
+    display: flex;
+    position: relative;
+    align-items: center;
   }
 
   &__item {
-    display: inline-block;
-    padding: 0px 15px;
-    width: 70vw;
-    height: auto;
-    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 20px;
+    width: 60vw;
+    max-height: 70vh;
     text-align: center;
+    overflow: hidden;
   }
 
   &__image {
-    width: 100%;
-    height: inherit;
+    width: auto;
+    height: auto;
+    max-height: 70vh;
+    max-width: 100%;
     border-radius: 8px;
-    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 3px 1px rgb(0 0 0 / 50%);
+    box-sizing: border-box;
   }
 
   &__button {
@@ -165,11 +174,7 @@ export default {
 @include breakpoint(laptop) {
   .slider {
     &__item {
-      height: 70vh;
-    }
-    &__image {
-      width: auto;
-      height: 100%;
+      max-height: 90vh;
     }
   }
 }
