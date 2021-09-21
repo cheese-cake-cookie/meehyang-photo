@@ -7,12 +7,14 @@
       </NuxtLink>
       <nav class="header__nav">
         <ul class="header__list">
-          <li class="header__item"><NuxtLink to="/">ALL</NuxtLink></li>
-          <li class="header__item"><NuxtLink to="/music">MUSIC</NuxtLink></li>
-          <li class="header__item">
-            <NuxtLink to="/people">PEOPLE</NuxtLink>
+          <li
+            class="header__item"
+            :class="{ selected: selectedGnbMenu == gnb }"
+            v-for="gnb in gnbMenu"
+            :key="gnb.name"
+          >
+            <NuxtLink :to="gnb.to">{{ gnb.name }}</NuxtLink>
           </li>
-          <li class="header__item"><NuxtLink to="/daily">DAILY</NuxtLink></li>
         </ul>
       </nav>
     </div>
@@ -20,8 +22,33 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   name: 'Header',
+  computed: {
+    ...mapState({
+      gnbMenu: (state) => state.gnbMenu,
+      selectedGnbMenu: (state) => state.selectedGnbMenu,
+    }),
+  },
+  watch: {
+    $route(newValue) {
+      this.$store.commit(
+        'SET_SELECTED_GNB_MENU',
+        this.$store.state.gnbMenu.find((menuItem) => {
+          return this.$route.path.match(menuItem.regex);
+        })
+      );
+    },
+  },
+  created() {
+    this.$store.commit(
+      'SET_SELECTED_GNB_MENU',
+      this.$store.state.gnbMenu.find((menuItem) => {
+        return this.$route.path.match(menuItem.regex);
+      })
+    );
+  },
 };
 </script>
 
@@ -70,6 +97,13 @@ export default {
 
   &__item:not(:last-child) {
     margin-right: 10px;
+
+    &.selected {
+      background-image: linear-gradient(90deg, #aedaf1 95%, #75ccff);
+      background-size: 100% 35%;
+      background-repeat: no-repeat;
+      background-position: bottom;
+    }
   }
 }
 
