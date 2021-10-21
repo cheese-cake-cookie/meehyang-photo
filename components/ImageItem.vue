@@ -48,6 +48,7 @@ export default {
       'div',
       {
         staticClass: data.staticClass.concat(' image-item-component'),
+        class: { ...data.class },
         on: {
           ...listeners,
         },
@@ -68,6 +69,12 @@ export default {
   background-color: lightgray;
   font-size: 0px;
   cursor: pointer;
+  transform: translate3d(0px, 15px, 0px);
+  transition: transform 0.3s ease-in-out;
+
+  &.showing {
+    transform: translate3d(0px, 0px, 0px);
+  }
 
   &:hover {
     & .image__dim {
