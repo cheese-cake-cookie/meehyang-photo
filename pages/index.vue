@@ -1,7 +1,7 @@
 <template>
   <section class="post-section">
     <p class="message--empty" v-if="!posts.length">oops! nothing in here!</p>
-    <ul class="image__list" v-else>
+    <ul class="image__list" ref="imageList" v-else>
       <ImageItem
         class="image__item"
         v-for="(post, index) in posts"
@@ -19,8 +19,10 @@
   </section>
 </template>
 <script>
+import lazyLoadingMixin from '../mixins/lazyLoadingMixin';
 import { shuffle } from '@/utils/array';
 export default {
+  mixins: [lazyLoadingMixin], // lazyLoading
   async asyncData({ $content, $axios }) {
     const musics = await $content('/music')
       // .limit(5)
@@ -50,6 +52,17 @@ export default {
     return {
       content: [],
     };
+  },
+  mounted() {
+    const imageList = this.$refs.imageList;
+
+    this.lazyLoading(imageList, (entries) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRatio > 0) {
+          entry.target.classList.add('showing');
+        }
+      });
+    });
   },
   methods: {
     showContent(content) {
